@@ -50,7 +50,7 @@ class Parser:
             if not person_value and duplicate_value:
                 self.__match_person.set_value(key, duplicate_value)
             elif person_value and duplicate_value and person_value != duplicate_value:
-                self.__match_person.set_value(key, person_value + duplicate_value)
+                self.__match_person.set_value(key, f"{person_value} {duplicate_value}")
         return False
 
     @staticmethod
@@ -70,8 +70,8 @@ class Parser:
             format_phone = f'+7({main_groups[0]}){main_groups[1]}-{main_groups[2]}-{main_groups[3]}'
         add_search = add_pattern.search(phone_string)
         if add_search:
-            add_format_phone = f' доб.{add_search.group(1)}'
-        return format_phone + add_format_phone
+            add_format_phone = f'доб.{add_search.group(1)}'
+        return f"{format_phone} {add_format_phone}".rstrip()
 
     @staticmethod
     def __get_phone_patterns() -> tuple[Pattern[str], Pattern[str]]:
