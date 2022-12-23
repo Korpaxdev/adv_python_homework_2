@@ -13,9 +13,8 @@ class Parser:
     def parse(self, file_name: str):
         with open(file_name, encoding='utf-8') as file:
             data = list(DictReader(file))
-            if not data:
-                return None
-            self.__set_people(data)
+            if data:
+                self.__set_people(data)
 
     def __set_people(self, data: list):
         for p in data:

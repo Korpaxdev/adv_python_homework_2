@@ -16,7 +16,7 @@ class CsvPersonFile:
             self.__write_rows(reader)
 
     @staticmethod
-    def __get_fields():
+    def __get_fields() -> list:
         return Person.get_fields_names()
 
     def __write_rows(self, reader: DictWriter):
